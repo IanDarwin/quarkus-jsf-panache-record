@@ -46,6 +46,11 @@
                              immediate="true"
                              icon="pi pi-list" styleClass="ui-button-secondary" style="margin-left: 5px;"/>
 
+            <p:commandButton value="Delete!"
+                             action="#{memberBean.deletePerson()}"
+                             rendered="#{memberBean.editing}"
+                             icon="pi pi-delete" styleClass="ui-button-secondary" style="margin-left: 5px;"/>
+
         </h:form>
     </p:card>
 </h:body>

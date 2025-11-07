@@ -61,7 +61,23 @@ public class MemberBean implements Serializable {
 		}
 		loadPeople(); // Refresh the list
 		editing = false;
-		// Navigate back to the list page
+		// Back to the list page
+		return "/personList.xhtml?faces-redirect=true";
+	}
+
+	@Transactional
+	public String deletePerson() {
+		if (selectedPerson != null &&
+			selectedPerson.getId() != null &&
+			selectedPerson.getId() != 0) {
+
+			selectedPerson.delete();
+
+			loadPeople(); // Refresh the list
+		}
+		editing = false;
+			
+		// Back to the list page
 		return "/personList.xhtml?faces-redirect=true";
 	}
 
