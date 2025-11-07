@@ -6,12 +6,32 @@
     xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:define name="body">
+<h:head>
+    <title>Welcome to the demo app</title>
+</h:head>
 
+<h:body>
 	<p:panel>
 
-	<a href="PersonList.web">Membership</a>
+	<p>
+	This is the home page of a trivial demo app showing off the capability
+	of Quarkus to serve as an HTML (JSF) web application host in addition to
+	its better known use as a REST web service engine.
+	</p>
+	<p>
+	Technologies used include:
+	<ul>
+	<li>Quarkus</li>
+	<li>JSF</li>
+	<li>Prime Faces UI add-ons</li>
+	<li>Hibernate</li>
+	<li>Panache</li>
+	<li>CDI</li>
+	</ul>
+	</p>
+
+	<a href="personList.web">Membership Demo</a>
 
 	</p:panel>
-</ui:define>
+</h:body>
 </ui:composition>

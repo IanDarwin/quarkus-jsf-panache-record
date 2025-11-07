@@ -54,7 +54,7 @@ public class MemberBean implements Serializable {
 
 	@Transactional
 	public String savePerson() {
-		if (selectedPerson.getId() == 0) {
+		if (selectedPerson.getId() == null || selectedPerson.getId() == 0) {
 			selectedPerson.persist();
 		} else {
 			Member.getEntityManager().merge(selectedPerson).persistAndFlush();
