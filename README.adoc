@@ -1,0 +1,7 @@
+= quarkus-jsf-panache-record
+
+Simple demo whose full name should be
+_Quarkus for web app with JSF and Primefaces, using Hibernate and Panache for database, and using Panache "Active Record" style blended with JSF/CDI managed bean_.
+But that title's too long for a repo, so it is (called) what it is.
+
+Just use the `run` script, or do `mvn quarkus:dev` then visit http://localhost:8440/[].
