@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Person List</title>
+</h:head>
+
+<h:body>
+    <p:card title="Person List">
+
+        <h:form id="personListForm">
+            <p:commandButton value="Add New Person" action="#{memberBean.createNew()}" icon="pi pi-plus" style="margin-bottom: 10px;"/>
+
+            <p:dataTable var="person" value="#{memberBean.people}" rows="10"
+                         paginator="true" emptyMessage="No people found."
+                         rowKey="#{person.id}" selectionMode="single">
+
+                <p:column headerText="ID">
+                    <h:outputText value="#{person.id}" />
+                </p:column>
+
+                <p:column headerText="First Name" sortBy="#{person.firstName}">
+                    <h:outputText value="#{person.firstName}" />
+                </p:column>
+
+                <p:column headerText="Last Name" sortBy="#{person.lastName}">
+                    <h:outputText value="#{person.lastName}" />
+                </p:column>
+
+                <p:column headerText="Email">
+                    <h:outputText value="#{person.email}" />
+                </p:column>
+
+                <p:column headerText="Actions" exportable="false">
+                    <p:commandButton value="View" action="#{memberBean.viewDetails(person.id)}"
+                                     icon="pi pi-search" styleClass="ui-button-flat ui-button-info" />
+
+                    <p:commandButton value="Edit" action="#{memberBean.editDetails(person.id)}"
+                                     icon="pi pi-pencil" styleClass="ui-button-flat ui-button-warning" style="margin-left: 5px;"/>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </p:card>
+</h:body>
+</html>

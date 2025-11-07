@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Person Details</title>
+</h:head>
+
+<h:body>
+    <p:card title="#{memberBean.editing ? 'Edit Person' : 'View Person'}">
+
+        <h:form id="personDetailForm">
+            <p:messages autoUpdate="true" closable="true" />
+
+            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid">
+
+                <p:outputLabel for="id" value="ID:" />
+                <h:outputText id="id" value="#{memberBean.selectedPerson.id}" />
+
+                <p:outputLabel for="firstName" value="First Name:" />
+                <p:inputText id="firstName" value="#{memberBean.selectedPerson.firstName}"
+                             readonly="#{!memberBean.editing}" required="true" />
+
+                <p:outputLabel for="lastName" value="Last Name:" />
+                <p:inputText id="lastName" value="#{memberBean.selectedPerson.lastName}"
+                             readonly="#{!memberBean.editing}" required="true" />
+
+                <p:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{memberBean.selectedPerson.email}"
+                             readonly="#{!memberBean.editing}" required="true">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                </p:inputText>
+
+            </p:panelGrid>
+
+            <p:spacer height="20" />
+
+            <p:commandButton value="Save"
+                             action="#{memberBean.savePerson()}"
+                             rendered="#{memberBean.editing}"
+                             icon="pi pi-save" styleClass="ui-button-success"/>
+
+            <p:commandButton value="Back to List" action="/personList.xhtml?faces-redirect=true"
+                             immediate="true"
+                             icon="pi pi-list" styleClass="ui-button-secondary" style="margin-left: 5px;"/>
+
+        </h:form>
+    </p:card>
+</h:body>
+</html>
