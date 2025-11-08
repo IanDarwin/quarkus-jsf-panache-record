@@ -9,5 +9,3 @@ Just use the `run` script, or do `mvn quarkus:dev` then visit http://localhost:8
 == TODO
 
 Add PF Message component (to both, using template?).
-
-Add confirm deletion.

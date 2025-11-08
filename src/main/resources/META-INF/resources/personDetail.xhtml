@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Person Details</title>
+    <title>Member Details</title>
 </h:head>
 
 <h:body>
@@ -41,15 +41,25 @@
                              action="#{memberBean.savePerson()}"
                              rendered="#{memberBean.editing}"
                              icon="pi pi-save" styleClass="ui-button-success"/>
+			</h:form>
+			<h:form>
+			<!-- In their own form to avoid hanging on validation -->
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-icon-check" />
+				<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-icon-close" />
+			</p:confirmDialog>
 
             <p:commandButton value="Back to List" action="/personList.xhtml?faces-redirect=true"
                              immediate="true"
-                             icon="pi pi-list" styleClass="ui-button-secondary" style="margin-left: 5px;"/>
+                             icon="pi pi-list" styleClass="ui-button-secondary" />
+
 
             <p:commandButton value="Delete!"
                              action="#{memberBean.deletePerson()}"
                              rendered="#{memberBean.editing}"
-                             icon="pi pi-delete" styleClass="ui-button-secondary" style="margin-left: 5px;"/>
+                             icon="pi pi-icon-trash" styleClass="ui-button-secondary" style="margin-left: 5px;">
+				<p:confirm header="Confirm Deletion" message="Really delete this member?" icon="pi pi-icon-alert" />
+			</p:commandButton>
 
         </h:form>
     </p:card>
